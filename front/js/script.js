@@ -13,8 +13,12 @@ async function obterFilmes() {
         let linha = corpoTabela.insertRow(0)
         let celulaTitulo = linha.insertCell(0)
         let celulaSinopse = linha.insertCell(1)
+        let celulaano = linha.insertCell(2)
+        let celulaclassificacao = linha.insertCell(3)
         celulaTitulo.innerHTML = filme.titulo
         celulaSinopse.innerHTML = filme.sinopse
+        celulaano.innerHTML = filme.ano
+        celulaclassificacao.innerHTML = filme.classificacao
     }
 
     console.log(filmes)
@@ -26,25 +30,25 @@ async function cadastrarFilme() {
     //pega os inputs que contém os valores que o usuário digitou
     let tituloInput = document.querySelector('#tituloInput')
     let sinopseInput = document.querySelector('#sinopseInput')
-    let dataDeLancamentoInput = document.querySelector('#DataDdeLançamento')
+    let anoInput = document.querySelector('#DataDdeLancamento')
     let classificacaoInput = document.querySelector('#Classificacao')
     //pega os valores digitados pelo usuário
     let titulo = tituloInput.value
     let sinopse = sinopseInput.value
-    let dataDeLancamento = dataDeLancamentoInput.value
+    let ano = anoInput.value
     let classificacao = classificacaoInput.value
-    if (titulo && sinopse && dataDeLancamento && classificacao) {
+    if (titulo && sinopse && ano && classificacao) {
 
         //limpa os campos que o usuário digitou
         tituloInput.value = ""
         sinopseInput.value = ""
-        dataDeLancamentoInput = ""
-        classificacaoInput = ""
+        anoInput.value = ""
+        classificacaoInput.value = ""
         //envia os dados ao servidor (back end)
         const filmes = (await axios.post(URLCompleta, {
             titulo,
             sinopse,
-            dataDeLancamento,
+            ano,
             classificacao
         })).data
         //limpa a tabela para preenchê-la com a coleção nova, atualizada
@@ -55,8 +59,12 @@ async function cadastrarFilme() {
             let linha = corpoTabela.insertRow(0)
             let celulaTitulo = linha.insertCell(0)
             let celulaSinopse = linha.insertCell(1)
+            let celulaano = linha.insertCell(2)
+            let celulaclassificacao = linha.insertCell(3)
             celulaTitulo.innerHTML = filme.titulo
             celulaSinopse.innerHTML = filme.sinopse
+            celulaano.innerHTML = filme.ano
+            celulaclassificacao.innerHTML = filme.classificacao
         }
     }
     //senão, exibe o alerta por até 2 segundos

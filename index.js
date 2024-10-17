@@ -8,13 +8,13 @@ let filmes = [
     {
     titulo: "Forrest Gump - O Contador de Histórias",
     sinopse: "Quarenta anos da história dos Estados Unidos, vistos pelos olhos de Forrest Gump (Tom Hanks), um rapaz com QI abaixo da média e boas intenções.",
-    ano: 1994,
+    ano: "1994-11-04",
     classificacao: 3,
     },
     {
     titulo: "Um Sonho de Liberdade",
     sinopse: "Em 1946, Andy Dufresne (Tim Robbins), um jovem e bem sucedido banqueiro, tem a sua vida radicalmente modificada ao ser condenado por um crime que nunca cometeu, o homicídio de sua esposa e do amante dela",
-    ano: 2012,
+    ano: "2012-04-25",
     classificacao: 5,
     }
 ]
@@ -34,8 +34,10 @@ app.post("/filmes", (req, res) => {
         //obtém os dados enviados pelo cliente
      const titulo = req.body.titulo
      const sinopse = req.body.sinopse
+     const ano = req.body.ano
+     const classificacao = req.body.classificacao
      //monta um objeto agrupando os dados. Ele representa um novo filme
-     const filme = {titulo: titulo, sinopse: sinopse}
+     const filme = {titulo: titulo, sinopse: sinopse, ano: ano, classificacao: classificacao}
      //adiciona o novo filme à base
      filmes.push(filme)
      //responde ao cliente. Aqui, optamos por devolver a base inteira ao cliente, embora não seja obrigatório.
